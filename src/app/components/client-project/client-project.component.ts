@@ -1,14 +1,18 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
 import { APIResponse, IEmployee, IProjects } from '../../model/interface/role';
 import { ClientService } from '../../services/client.service';
-import { Client, ClientProject } from '../../model/class/Client';
+import { Client } from '../../model/class/Client';
+import { Constant } from '../../constant/Constant';
+import { CommonModule } from '@angular/common';
+import { AlertComponent } from '../../reusableComponents/alert/alert.component';
+import { ButtonComponent } from '../../reusableComponents/button/button.component';
 
 @Component({
   selector: 'app-client-project',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, AlertComponent, ButtonComponent],
   templateUrl: './client-project.component.html',
   styleUrl: './client-project.component.css'
 })
@@ -33,11 +37,12 @@ export class ClientProjectComponent implements OnInit {
   clientService = inject(ClientService)
   employeeService = inject(EmployeeService)
 
+  valRequiredMsg = Constant.VALIDATION_MESSAGE.REQUIRED
+
+  projectList = signal<IProjects[]>([])
+
   employeeList: IEmployee[] = []
   clientList: Client[] = []
-  clientProjectList: IProjects[] = []
-
-  projectObj: ClientProject = new ClientProject
 
   ngOnInit(): void {
     this.getAllClient()
@@ -45,28 +50,28 @@ export class ClientProjectComponent implements OnInit {
     this.getAllClientProjects()
   }
 
-  getAllEmployee(){
-    this.employeeService.getAllEmployee().subscribe((res:APIResponse) =>{
+  getAllEmployee() {
+    this.employeeService.getAllEmployee().subscribe((res: APIResponse) => {
       this.employeeList = res.data
     })
   }
 
-  getAllClient(){
-    this.clientService.getAllClient().subscribe((res:APIResponse) => {
+  getAllClient() {
+    this.clientService.getAllClient().subscribe((res: APIResponse) => {
       this.clientList = res.data
     })
   }
 
-  getAllClientProjects(){
-    this.clientService.getAllClientProject().subscribe((res:APIResponse) => {
-      this.clientProjectList = res.data
+  getAllClientProjects() {
+    this.clientService.getAllClientProject().subscribe((res: APIResponse) => {
+      this.projectList.set(res.data)
     })
   }
 
-  saveProject(){
+  saveProject() {
     const formValue = this.projectForm.value
     this.clientService.addUpdateClientProject(formValue).subscribe((res: APIResponse) => {
-      if(res.result){
+      if (res.result) {
         alert('Project Created Successfully')
       } else {
         alert(res.message)
@@ -74,17 +79,12 @@ export class ClientProjectComponent implements OnInit {
     })
   }
 
-  editProject(){
-  
-  }
-
-  resetForm(){
+  resetForm() {
     this.projectForm.reset()
   }
 
-  deleteProject(id: number){
+  deleteProject(id: number) {
 
   }
-
 
 }

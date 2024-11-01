@@ -3,11 +3,15 @@ import { Client } from '../../model/class/Client';
 import { FormsModule } from '@angular/forms';
 import { ClientService } from '../../services/client.service';
 import { APIResponse } from '../../model/interface/role';
+import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
+import { AlertComponent } from '../../reusableComponents/alert/alert.component';
+import { ButtonComponent } from '../../reusableComponents/button/button.component';
 
 @Component({
   selector: 'app-client',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule, AlertComponent, ButtonComponent],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css'
 })
@@ -17,6 +21,8 @@ export class ClientComponent implements OnInit {
   clientList: Client[] = []
 
   clientService = inject(ClientService)
+
+  userList$ : Observable<any> = new Observable
 
   ngOnInit(): void {
     this.onLoadClient()

@@ -1,3 +1,4 @@
+<app-alert [alertType]="'Success'"></app-alert>
 <div class="row">
     <div class="col-8">
         <div class="card">
@@ -17,16 +18,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (project of clientProjectList; track $index) {
+                        @for (project of projectList(); track $index) {
                         <tr>
                             <td>{{$index+1}}</td>
                             <td>{{project.projectName}}</td>
                             <td>{{project.empName}}</td>
                             <td>{{project.clientName}}</td>
-                            <td>{{project.expectedEndDate}}</td>
+                            <td>{{project.expectedEndDate | date: 'dd MMM yyyy'}}</td>
                             <td>
-                                <button class="btn btn-primary mx-1 px-3" (click)="editProject()">Edit</button>
-                                <button class="btn btn-danger mx-1 px-3">Delete</button>
+                                <app-button [btnClass]="'btn btn-primary mx-1 px-3'" [btnText]="'Edit'"></app-button>
+                                <app-button [btnClass]="'btn btn-danger mx-1 px-3'" [btnText]="'Delete'"></app-button>
                             </td>
                         </tr>
                         }
@@ -50,7 +51,7 @@
                             @if (projectForm.controls['projectName'].touched) {
                             <div class="text-danger">
                                 @if (projectForm.controls['projectName'].errors?.['required']) {
-                                <span>This is Required</span>
+                                <span>{{valRequiredMsg}}</span>
                                 }
                             </div>
                             }
@@ -117,7 +118,8 @@
                             <button class="btn btn-secondary w-100" (click)="resetForm()">Reset</button>
                         </div>
                         <div class="col-6 text-center my-3">
-                            <button class="btn btn-success w-100" [disabled]="projectForm.invalid" (click)="saveProject()">Save</button>
+                            <button class="btn btn-success w-100" [disabled]="projectForm.invalid"
+                                (click)="saveProject()">Save</button>
                         </div>
                     </div>
                 </form>

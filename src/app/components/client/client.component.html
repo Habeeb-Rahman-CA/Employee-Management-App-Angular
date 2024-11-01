@@ -1,3 +1,4 @@
+<app-alert [alertType]="'Error'"></app-alert>
 <div class="row">
     <div class="col-8">
         <div class="card">
@@ -22,7 +23,7 @@
                                 <td>{{$index+1}}</td>
                                 <td>{{client.contactPersonName}}</td>
                                 <td>{{client.contactNo}}</td>
-                                <td>{{client.companyName}}</td>
+                                <td>{{client.companyName | uppercase}}</td>
                                 <td>{{client.city}}</td>
                                 <td>
                                     <button class="btn btn-primary mx-1 px-3" (click)="onEdit(client)">Edit</button>
@@ -93,12 +94,10 @@
                     </div>
                     <div class="row">
                         <div class="col-6 text-center my-3">
-                            <button class="btn btn-secondary w-100" (click)="resetForm()">Reset</button>
+                            <app-button [btnClass]="'btn btn-secondary w-100'" (btnClick)="resetForm()" [btnText]="'Reset'"></app-button>
                         </div>
                         <div class="col-6 text-center my-3">
-                            <button class="btn btn-success w-100" (click)="onSaveClient()" [disabled]="!form.valid">
-                                {{clientObj.clientId != 0 ? 'Update':'Save'}}
-                            </button>
+                            <app-button [btnClass]="'btn btn-success w-100'" (btnClick)="onSaveClient()" [btnText]="clientObj.clientId != 0 ? 'Update':'Save'"></app-button>
                         </div>
                     </div>
                 </form>
