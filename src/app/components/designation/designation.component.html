@@ -1,14 +1,20 @@
 <div class="row">
+    @if (isLoader) {
+    <div class="col-12 text-center">
+        <div class="spinner-border text-dark"></div>
+    </div>
+    } @else {
     @for (item of designationList; track $index) {
-    <div class="col-3">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">{{item.designation}}</h4>
-                <a href="#" class="card-link">Edit</a>
-                <a href="#" class="card-link">Delete</a>
+    <div class="col-4">
+        <div class="card border-2 p-2">
+            <div class="card-body text-center">
+                <h4 class="card-title text-uppercase p-2">{{item.designation}}</h4>
+                <div class="d-flex align-items-center justify-content-between">
+                    <a href="#" class="card-link text-decoration-none border rounded-4 border-2 bg-primary w-50 text-white">Edit</a>
+                    <a href="#" class="card-link text-decoration-none border rounded-4 border-2 w-50 bg-danger text-white">Delete</a>
+                </div>
             </div>
         </div>
     </div>
-    }
-
+    }}
 </div>
