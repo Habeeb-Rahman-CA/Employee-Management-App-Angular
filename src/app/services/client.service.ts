@@ -21,4 +21,14 @@ export class ClientService {
   deleteClient(id: number): Observable<APIResponse> {
     return this.http.delete<APIResponse>(environment.API_URL + 'DeleteClientByClientId?clientId=' + id)
   }
+
+  getAllClientProject(): Observable<APIResponse> {
+    return this.http.get<APIResponse>(environment.API_URL + 'GetAllClientProjects')
+  }
+
+  addUpdateClientProject(obj: Client): Observable<APIResponse> {
+    return this.http.post<APIResponse>(environment.API_URL + 'AddUpdateClientProject', obj)
+  }
+
+  
 }
