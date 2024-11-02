@@ -1,0 +1,9 @@
+input, textarea, select{
+    margin: 10px 0;
+    border: 1px solid #c4c4c4;
+}
+
+label{
+    color: #434343;
+    font-size: 14px;
+}

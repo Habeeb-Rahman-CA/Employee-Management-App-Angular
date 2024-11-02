@@ -1,0 +1,27 @@
+<div class="container-fluid mt-5">
+  <h1 class="tt text-center">TeamTrack.</h1>
+  <p class=" tp text-center text-uppercase fw-bold">Helps keep track of roles and responsibilities.</p>
+  <div class="row">
+    <div class="col-12 d-flex align-items-center justify-content-center h-custom mt-4">
+      <form>
+        <div data-mdb-input-init class="form-outline mb-2 ">
+          <label class="form-label" for="form3Example3">Email address</label>
+          <input type="email" [(ngModel)]="loginObj.email" name="email" id="form3Example3"
+            class="form-control form-control-lg" placeholder="Enter a valid email address" />
+        </div>
+
+        <div data-mdb-input-init class="form-outline mb-4">
+          <label class="form-label" for="form3Example4">Password</label>
+          <input type="password" [(ngModel)]="loginObj.password" name="password" id="form3Example4"
+            class="form-control form-control-lg" placeholder="Enter password" />
+        </div>
+
+        <div class="text-center text-lg-start">
+          <button (click)="onLogin()" type="button" data-mdb-button-init data-mdb-ripple-init
+            class="btn btn-dark btn-lg">Login</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

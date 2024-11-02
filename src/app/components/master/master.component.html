@@ -1,12 +1,12 @@
-<div class="row p-2">
+<div class="row p-2 my-2">
     <div class="col-12 text-center">
         <div class="btn-group">
-            <div class="btn" [ngClass]="currentComponent == 'Roles' ? 'btn-primary':'btn-dark'" (click)="changeTab('Roles')">Roles</div>
-            <div class="btn" [ngClass]="currentComponent == 'Designation' ? 'btn-primary':'btn-dark'" (click)="changeTab('Designation')">Designation</div>
+            <div class="btn role-btn" [ngClass]="currentComponent == 'Roles' ? 'btn-dark':'btn-secondary'" (click)="changeTab('Roles')">Roles</div>
+            <div class="btn desi-btn" [ngClass]="currentComponent == 'Designation' ? 'btn-dark':'btn-secondary'" (click)="changeTab('Designation')">Designation</div>
         </div>
     </div>
 </div>
-<div class="row p-2">
+<div class="row">
     <div class="col-12" *ngIf="currentComponent == 'Roles'">
         <app-roles></app-roles>
 

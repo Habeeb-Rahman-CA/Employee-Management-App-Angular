@@ -1,28 +1,22 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="javascript:void(0)">Logo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a class="navbar-brand fw-bold fs-3 mx-3" href="javascript:void(0)">TeamTrack</a>
       <div class="collapse navbar-collapse" id="mynavbar">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
+        <ul class="navbar-nav me-auto fw-bold">
+          <li class="nav-item px-2">
             <a class="nav-link" routerLink="/master" routerLinkActive="active">Master</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item px-2">
             <a class="nav-link" routerLink="/employee" routerLinkActive="active">Employee</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item px-2">
             <a class="nav-link" routerLink="/client" routerLinkActive="active">Clients</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item px-2">
             <a class="nav-link" routerLink="/client-project" routerLinkActive="active">Projects</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="text" placeholder="Search">
-          <button class="btn btn-primary" type="button">Search</button>
-        </form>
       </div>
+      <button class="btn btn-danger mx-3 my-2 fw-bold" type="button" (click)="logOut()">LogOut</button>
     </div>
   </nav>
