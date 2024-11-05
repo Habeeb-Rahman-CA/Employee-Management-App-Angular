@@ -73,10 +73,12 @@ export class ClientProjectComponent implements OnInit {
     this.clientService.addUpdateClientProject(formValue).subscribe((res: APIResponse) => {
       if (res.result) {
         alert('Project Created Successfully')
+        this.getAllClientProjects()
       } else {
         alert(res.message)
       }
     })
+    
   }
 
   resetForm() {
